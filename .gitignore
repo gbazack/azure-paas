@@ -1,0 +1,14 @@
+tmp/*
+**/*tfstate*
+**/*tfsate*
+*.terraform/
+*.lock.hcl
+.history/
+*.txt
+**/*.json
+**/*.yaml
+**/*custom-encryption*
+.infracost/
+credentials/*
+kubernetes/*
+input/managed-psql-small.sh
