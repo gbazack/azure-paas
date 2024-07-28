@@ -23,13 +23,13 @@
 2. Create an Azure container storage to save the Terraform state:
 
 ```bash
-./provision-azure.sh init small.sh
+./azure-paas.sh init small.sh
 ```
 
 3. Deploy the Azure PaaS with the following command:
 
 ```bash
-./provision-azure.sh apply small.sh
+./azure-paas.sh create small.sh
 ```
 
 <!-- 4. Once an  release is installed on the PaaS, expose its endpoint to "public":
@@ -41,7 +41,7 @@
 4. To destroy the PaaS environment, remove the Lock protection then run the following:
 
 ```bash
-./provision-azure.sh destroy small.sh
+./azure-paas.sh delete small.sh
 ```
 
 ## Terraform Modules
