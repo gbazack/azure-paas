@@ -38,8 +38,13 @@ export TF_VAR_tag_used_by=TEAM/CLIENT
 export TF_VAR_tag_purpose=PURPOSE
 
 # AKS Nodepools variables
-# nodepool
-export TF_VAR_nodepool_vm_size=ARM_VM_SIZE          # Must support Host Encryption
-export TF_VAR_nodepool_node_count=1
-export TF_VAR_nodepool_os_disk_size_gb=50           # Must be > 29
-export TF_VAR_nodepool_az='["1", "2", "3"]'
+# Database
+export TF_VAR_database_vm_size=ARM_VM_SIZE          # Must support Host Encryption
+export TF_VAR_database_node_count=1
+export TF_VAR_database_os_disk_size_gb=50           # Must be > 29
+export TF_VAR_database_az='["1", "2", "3"]'
+# Backend
+export TF_VAR_backend_vm_size=ARM_VM_SIZE          # Must support Host Encryption
+export TF_VAR_backend_node_count=1
+export TF_VAR_backend_os_disk_size_gb=50           # Must be > 29
+export TF_VAR_backend_az='["1", "2", "3"]'

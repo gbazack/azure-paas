@@ -58,7 +58,7 @@ case "$1" in
                 -backend-config="container_name=${TF_VAR_container_name}" -reconfigure
             terraform apply --target module.keyvault
             terraform apply --target module.network --target module.gateway
-            terraform apply --target module.aks-cluster --target module.nodepool
+            terraform apply --target module.aks
         else
             echo -ne "\e[31m Error:  Invalid input values!\e[39m\n"
             usage
@@ -93,7 +93,7 @@ case "$1" in
                 -backend-config="tenant_id=${TF_VAR_tenant_id}" \
                 -reconfigure
             terraform destroy --target module.kubernetes
-            terraform destroy --target module.nodepool --target module.aks-cluster
+            terraform destroy --target module.aks
             terraform destroy --target module.gateway --target module.network
             terraform destroy --target module.keyvault
         else
