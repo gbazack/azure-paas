@@ -51,8 +51,7 @@
 | <a name="module_keyvault"></a> [keyvault](./keyvault/)                        | ./keyvault                | 1.0 |
 | <a name="module_network"></a> [network](./network/)                           | ./network                 | 1.1 |
 | <a name="module_gateway"></a> [gateway](./gateway/)                           | ./gateway                 | 1.0 |
-| <a name="module_cluster"></a> [cluster](./aks/cluster)                        | ./aks/cluster             | 1.1 |
-| <a name="module_nodepool"></a> [nodepool](./aks/nodepool)                     | ./aks/nodepool            | 1.1 |
+| <a name="module_aks"></a> [aks](./aks/)                                       | ./aks                     | 1.1 |
 <!-- | <a name="module_namespace"></a> [namespace](./kubernetes/namespace/)          | ./kubernetes/namespace    | 1.0 |
 | <a name="module_cert-manager"></a> [cert-manager](./kubernetes/cert-manager/) | ./kubernetes/cert-manager | 1.0 |
 | <a name="module_boundary"></a> [boundary](./boundary/)                        | ./kubernetes/boundary     | 1.0 |

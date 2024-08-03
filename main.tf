@@ -67,8 +67,8 @@ module "gateway" {
   tag_purpose         = var.tag_purpose
 }
 
-module "aks-cluster" {
-  source                     = "./aks/cluster"
+module "aks" {
+  source                     = "./aks"
   resource_group_name        = data.azurerm_resource_group.aks.name
   client_id                  = var.client_id
   client_secret              = var.client_secret
@@ -81,23 +81,27 @@ module "aks-cluster" {
   key_vault_key_id           = module.keyvault.key_vault_key_id
   gateway_id                 = module.gateway.gateway_id
   #
+  database_vm_size         = var.database_vm_size
+  database_node_count      = var.database_node_count
+  database_az              = var.database_az
+  database_os_disk_size_gb = var.database_os_disk_size_gb
+  #
+  backend_vm_size          = var.backend_vm_size
+  backend_node_count       = var.backend_node_count
+  backend_az               = var.backend_az
+  backend_os_disk_size_gb  = var.backend_os_disk_size_gb
+  #
   tag_used_by                = var.tag_used_by
   tag_purpose                = var.tag_purpose
 }
 
-module "nodepool" {
-  source                   = "./aks/nodepool"
-  aks_cluster_id           = module.aks-cluster.aks_cluster_id
-  prefix_name              = var.prefix_name
-  subnet_id                = module.network.aks_subnet_id
-  nodepool_name            = "backend"
-  nodepool_vm_size         = var.nodepool_vm_size
-  nodepool_node_count      = var.nodepool_node_count
-  nodepool_az              = var.nodepool_az
-  nodepool_os_disk_size_gb = var.nodepool_os_disk_size_gb
-  #
-  tag_used_by              = var.tag_used_by
-  tag_purpose              = var.tag_purpose
-  #
-  depends_on               = [ module.aks-cluster ]
+module "kubernetes" {
+  source                     = "./kubernetes"
+  k8s_server_host            = module.aks.api_server_endpoint
+  k8s_client_certificate     = module.aks.client_certificate
+  k8s_client_key             = module.aks.client_key
+  k8s_cluster_ca_certificate = module.aks.cluster_ca_certificate
+  prefix_name                = var.prefix_name
+  cluster_name               = var.prefix_name
+  key_name                   = module.keyvault.disk_encryption_set_id
 }

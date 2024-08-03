@@ -12,6 +12,7 @@ function usage() {
         <action>:
                 init          to create container storage for TF states
                 create        to deploy the k8s cluster and its addons
+                test          to deploy a two-tier application on the aks cluster
                 delete        to destroy all resources of the enviroment
         <input>: parameters.sh
 EOF
@@ -64,6 +65,21 @@ case "$1" in
             exit 1
         fi
     ;;
+    "test")
+        tf_var_file=$(readlink -f $2)
+        if [[ -n "${tf_var_file}" ]]; then
+            source $tf_var_file
+            echo "Deploying a two-tier application on the Kubernetes cluster"
+            terraform init -backend-config="resource_group_name=${TF_VAR_resource_group_name}" \
+                -backend-config="storage_account_name=${TF_VAR_storage_account_name}" \
+                -backend-config="container_name=${TF_VAR_container_name}" -reconfigure
+            terraform apply --target module.kubernetes
+        else
+            echo -ne "\e[31m Error:  Invalid input values!\e[39m\n"
+            usage
+            exit 1
+        fi
+    ;;
     "delete")
         tf_var_file=$(readlink -f $2)
         if [[ -n "${tf_var_file}" ]]; then
@@ -76,6 +92,7 @@ case "$1" in
                 -backend-config="subscription_id=${TF_VAR_subscription_id}" \
                 -backend-config="tenant_id=${TF_VAR_tenant_id}" \
                 -reconfigure
+            terraform destroy --target module.kubernetes
             terraform destroy --target module.nodepool --target module.aks-cluster
             terraform destroy --target module.gateway --target module.network
             terraform destroy --target module.keyvault

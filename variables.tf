@@ -41,28 +41,47 @@ variable "os_sku" {
   default     = "Ubuntu"
 }
 
-# nodepool variables
-variable "nodepool_name" {
-  description = "The name of the Node Pool"
-  type        = string
-}
-
-variable "nodepool_vm_size" {
+# Nodepools variables
+# database
+variable "database_vm_size" {
   description = "The SKU which should be used for the Virtual Machines used in this Node Pool"
   type        = string
 }
-variable "nodepool_node_count" {
+
+variable "database_node_count" {
   description = "Number of nodes"
   type        = number
   default     = 1
 }
 
-variable "nodepool_os_disk_size_gb" {
+variable "database_os_disk_size_gb" {
   description = "The Agent Operating System disk size in GB"
   type        = number
   default     = 30
 }
-variable "nodepool_az" {
+variable "database_az" {
+  description = "Specifies a list of Availability Zones in which this Kubernetes"
+  type        = list(string)
+}
+
+# backend
+variable "backend_vm_size" {
+  description = "The SKU which should be used for the Virtual Machines used in this Node Pool"
+  type        = string
+}
+
+variable "backend_node_count" {
+  description = "Number of nodes"
+  type        = number
+  default     = 1
+}
+
+variable "backend_os_disk_size_gb" {
+  description = "The Agent Operating System disk size in GB"
+  type        = number
+  default     = 30
+}
+variable "backend_az" {
   description = "Specifies a list of Availability Zones in which this Kubernetes"
   type        = list(string)
 }
@@ -93,23 +112,32 @@ variable "subscription_id" {
   type        = string
 }
 
-variable "env_dns_name" {
-    description = "DNS name of the environment"
-    type        = string
+variable "symfony-container-image" {
+  description = "Container image for deploying Symfony"
+  type        = string
+  default     = "bitnami/symfony:6.4.3"
 }
 
-variable "cloud_dns_sa" {
-    description = "Path to GCP service account"
-    type        = string
+variable "database-container-image" {
+  description = "Container image for deploying database server"
+  type        = string
+  default     = ""
 }
 
-variable "gandi_api_key" {
-    description = "API key for access to Gandi"
+variable "db-username" {
+    description = "Base64 encoded database username"
     type        = string
+    default     = "c3ltZm9ueXVzZXI="
 }
 
-variable "letsencrypt_solver" {
-    description = "Type of challenge mechanis used by Cert-manager"
+variable "db-password" {
+    description = "Base64 encoded database password"
     type        = string
-    default     = "http"
+    default     = "aGVyZVdlZ29BZ2Fpbg=="
+}
+
+variable "db-root-password" {
+    description = "Base64 encoded database password"
+    type        = string
+    default     = "SWFtVGhlTWFzdGVy"
 }

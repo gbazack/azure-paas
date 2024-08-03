@@ -12,3 +12,4 @@ tmp/*
 credentials/*
 kubernetes/*
 input/managed-psql-small.sh
+DOCUMENTATION.*

@@ -69,3 +69,63 @@ variable "kubernetes_version" {
   description = "Version of the Kubernetes API server"
   type        = string
 }
+
+# Nodepools variables
+# database
+variable "database_vm_size" {
+  description = "The SKU which should be used for the Virtual Machines used in this Node Pool"
+  type        = string
+}
+
+variable "database_node_count" {
+  description = "Number of nodes"
+  type        = number
+  default     = 1
+}
+
+variable "database_os_disk_size_gb" {
+  description = "The Agent Operating System disk size in GB"
+  type        = number
+  default     = 30
+}
+variable "database_az" {
+  description = "Specifies a list of Availability Zones in which this Kubernetes"
+  type        = list(string)
+}
+
+# backend
+variable "backend_vm_size" {
+  description = "The SKU which should be used for the Virtual Machines used in this Node Pool"
+  type        = string
+}
+
+variable "backend_node_count" {
+  description = "Number of nodes"
+  type        = number
+  default     = 1
+}
+
+variable "backend_os_disk_size_gb" {
+  description = "The Agent Operating System disk size in GB"
+  type        = number
+  default     = 30
+}
+variable "backend_az" {
+  description = "Specifies a list of Availability Zones in which this Kubernetes"
+  type        = list(string)
+}
+
+variable "tag_used_by" {
+  description = "This tag identifies the user of this environment"
+  type        = string
+}
+
+variable "tag_purpose" {
+  description = "This tag identifies the purpose of this environment"
+  type        = string
+}
+
+variable "subnet_id" {
+  description = "the subnet id for the cluster"
+  type        = string
+}
