@@ -114,18 +114,3 @@ variable "backend_az" {
   description = "Specifies a list of Availability Zones in which this Kubernetes"
   type        = list(string)
 }
-
-variable "tag_used_by" {
-  description = "This tag identifies the user of this environment"
-  type        = string
-}
-
-variable "tag_purpose" {
-  description = "This tag identifies the purpose of this environment"
-  type        = string
-}
-
-variable "subnet_id" {
-  description = "the subnet id for the cluster"
-  type        = string
-}

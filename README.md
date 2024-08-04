@@ -3,7 +3,7 @@
 
 - Terraform version v1.7+
 - An existing Azure resource group with [lock protection](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json)
-- [Service principal](https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash) named `terraform` with the required roles in the above-mentioned resource group
+- [Service principal](https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash) named `terraform` in the above-mentioned resource group with the required roles (by default `Contributor`). 
 
 #### Terraform providers
 
@@ -32,13 +32,13 @@
 ./azure-paas.sh create small.sh
 ```
 
-<!-- 4. Once an  release is installed on the PaaS, expose its endpoint to "public":
+4. Test the PaaS by deploying a two-tier application on it:
 
 ```bash
-./provision-azure.sh expose small.sh
-``` -->
+./azure-paas.sh test small.sh
+```
 
-4. To destroy the PaaS environment, remove the Lock protection then run the following:
+5. To destroy the PaaS environment, remove the Lock protection then run the following:
 
 ```bash
 ./azure-paas.sh delete small.sh
@@ -49,11 +49,11 @@
 | Name | Source | Version |
 |------|--------|:---------:|
 | <a name="module_keyvault"></a> [keyvault](./keyvault/)                        | ./keyvault                | 1.0 |
-| <a name="module_network"></a> [network](./network/)                           | ./network                 | 1.1 |
+| <a name="module_network"></a> [network](./network/)                           | ./network                 | 1.0 |
 | <a name="module_gateway"></a> [gateway](./gateway/)                           | ./gateway                 | 1.0 |
-| <a name="module_aks"></a> [aks](./aks/)                                       | ./aks                     | 1.1 |
-<!-- | <a name="module_namespace"></a> [namespace](./kubernetes/namespace/)          | ./kubernetes/namespace    | 1.0 |
-| <a name="module_cert-manager"></a> [cert-manager](./kubernetes/cert-manager/) | ./kubernetes/cert-manager | 1.0 |
+| <a name="module_aks"></a> [aks](./aks/)                                       | ./aks                     | 1.0 |
+| <a name="module_kubernetes"></a> [namespace](./kubernetes/)                   | ./kubernetes              | 1.0 |
+<!-- | <a name="module_cert-manager"></a> [cert-manager](./kubernetes/cert-manager/) | ./kubernetes/cert-manager | 1.0 |
 | <a name="module_boundary"></a> [boundary](./boundary/)                        | ./kubernetes/boundary     | 1.0 |
 | <a name="module_ingress"></a> [ingress](./kubernetes/ingress/)                | ./kubernetes/ingress      | 1.0 | -->
 
@@ -78,5 +78,5 @@ The input variables are described in `small.sh`, `large.sh` and `custom.sh` file
 
 ## References
 
-- Click [here](#) to have an overview of the PaaS architecture
+- Click [here](./DOCUMENTATION.md) to have an overview of the PaaS architecture
 <!-- END_TF_DOCS -->
