@@ -33,22 +33,23 @@ Please note that the steps here offer a high-level overview of the process. To u
 
 1. Create a storage for the TF state files
 
-![Create stoarge](./media/azure-paas-init.webm){width=75%}
+<video src="./media/videos/azure-paas-init.mp4" width="75%" controls></video>
 
 2. Create the Kubernetes cluster and its addons
 
-![Create PaaS](./media/azure-paas-create-short.webm){width=75%}
+<video src="./media/videos/azure-paas-create-short.mp4" width="75%" controls></video>
 
 ### Test the custom Azure PaaS
 
 1. Deploy a two-tier application on the Kubernetes cluster
 
-![Deploy App](./media/azure-paas-test.webm){width=75%}
+<video src="./media/videos/azure-paas-test.mp4" width="75%" controls></video>
 
 2. Visualize the resources via Azure portal
 
-![Monitoring](./media/azure-portal-monitoring.webm){width=75%}
+<video src="./media/videos/azure-portal-monitoring.mp4" width="75%" controls></video>
+
 
 ## Additional resources
 
-[Click here to see other videos tutorials](./media/)
+[Click here to see other videos tutorials](./media/videos)
