@@ -6,7 +6,7 @@ The following documentation comprehensively explains the necessary resources and
 
 Please note that the steps here offer a high-level overview of the process. To understand the deployment completely, reviewing the provided architecture design image is highly recommended.
 
-<img src="./media/azure-paas.png" width="350" height="300">
+<img src="./media/azure-paas.png" width="60%">
 
 ## Components of the PaaS
 
@@ -33,11 +33,21 @@ Please note that the steps here offer a high-level overview of the process. To u
 
 1. Create a storage for the TF state files
 
-<video src="./media/videos/azure-paas-init.mp4" width="75%" controls></video>
+<video src="media/videos/azure-paas-init.mp4" type="video/mp4" title="Create a storage for the TF state files" width="75%" controls></video>
+
+[Download the video](media/videos/azure-paas-init.mp4)
+
 
 2. Create the Kubernetes cluster and its addons
 
-<video src="./media/videos/azure-paas-create-short.mp4" width="75%" controls></video>
+
+<video controls autoplay>
+  <source src="media/videos/azure-paas-create-short.mp4" type="video/mp4" width="75%">
+  Create the Kubernetes cluster and its addons.
+</video>
+
+[Download the video](media/videos/azure-paas-create-short.mp4)
+
 
 ### Test the custom Azure PaaS
 
@@ -45,10 +55,14 @@ Please note that the steps here offer a high-level overview of the process. To u
 
 <video src="./media/videos/azure-paas-test.mp4" width="75%" controls></video>
 
+[Download the video](media/videos/azure-paas-test.mp4)
+
+
 2. Visualize the resources via Azure portal
 
 <video src="./media/videos/azure-portal-monitoring.mp4" width="75%" controls></video>
 
+[Download the video](media/videos/azure-portal-monitoring.mp4)
 
 ## Additional resources
 
